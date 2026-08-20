@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nocturne-6eec3740-6149-40c9-ba89-b78e7db87e47/styles.css">
+  <script src="_ds/nocturne-6eec3740-6149-40c9-ba89-b78e7db87e47/_ds_bundle.js"></script>
+  <style>
+    :root{
+      --color-bg:#0A0C2E;
+      --color-surface:#141842;
+      --color-accent:#2CA9A6;
+      --color-accent-2:#3D72B9;
+      --color-accent-100:#e8f8f7; --color-accent-200:#c3ebe8; --color-accent-300:#8dd6d2;
+      --color-accent-400:#55c0bc; --color-accent-500:#2CA9A6; --color-accent-600:#228d8a;
+      --color-accent-700:#1a6e6c; --color-accent-800:#134f4d; --color-accent-900:#0d3433;
+      --color-accent-2-100:#eaf1f9; --color-accent-2-200:#cbdbed; --color-accent-2-300:#9db8de;
+      --color-accent-2-400:#6c93cb; --color-accent-2-500:#3D72B9; --color-accent-2-600:#305c96;
+      --color-accent-2-700:#274a79; --color-accent-2-800:#1e3a5f; --color-accent-2-900:#162a45;
+    }
+    a{text-decoration:none}
+    a:hover{color:var(--color-accent)}
+    @keyframes driftA { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(4%,6%) scale(1.15);} }
+    @keyframes driftB { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-5%,-5%) scale(1.1);} }
+    @keyframes tagGlow { 0%,100%{box-shadow:0 0 0 rgba(0,0,0,0);} 50%{box-shadow:0 0 14px color-mix(in srgb, var(--color-accent) 45%, transparent);} }
+    @keyframes lineGlow { 0%,100%{opacity:0.5;} 50%{opacity:1;} }
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity:1; transform:translateY(0); }
+  </style>
+  <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 56"><rect width="120" height="56" fill="#0A0C2E"/><text x="60" y="32" font-size="14" fill="#2CA9A6" text-anchor="middle" font-family="sans-serif">EC</text></svg></template>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)">
+
+  <div style="position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0">
+    <div style="position:absolute;top:-15%;left:-8%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle, var(--color-accent) 0%, transparent 70%);opacity:0.16;filter:blur(50px);animation:driftA 22s ease-in-out infinite"></div>
+    <div style="position:absolute;bottom:-18%;right:-10%;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, var(--color-accent-2) 0%, transparent 70%);opacity:0.14;filter:blur(55px);animation:driftB 26s ease-in-out infinite"></div>
+  </div>
+
+  <header style="position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--color-bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-divider)">
+    <nav class="nav" style="max-width:1240px;margin:0 auto;padding:var(--space-3) var(--space-6)">
+      <a href="#" class="nav-brand" onClick="{{ goHome }}" style="display:flex;align-items:center">
+        <img src="uploads/fulllogo_transparent_nobuffer.png" alt="Effluence Consulting" style="height:30px;display:block" />
+      </a>
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+        <a href="#" onClick="{{ item.onClick }}" aria-current="{{ item.current }}" style="padding:6px 2px">{{ item.label }}</a>
+      </sc-for>
+      <a class="btn btn-primary" href="#" onClick="{{ goContact }}" style="margin-left:var(--space-3)">Book a consultation</a>
+    </nav>
+  </header>
+
+  <main style="flex:1;position:relative;z-index:1">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Home">
+        <div style="max-width:1240px;margin:0 auto;padding:96px var(--space-6) 56px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:var(--space-6);align-items:center">
+          <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+            <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Salesforce Consulting</span>
+            <h1 style="font-size:52px;max-width:760px">Salesforce systems built for finance-driven businesses.</h1>
+            <p style="font-size:18px;max-width:620px;opacity:0.85">Effluence Consulting Pty Ltd designs, implements and supports Salesforce environments for financial services firms and beyond — from first rollout to ongoing platform care.</p>
+            <div style="display:flex;gap:var(--space-3);margin-top:var(--space-2)">
+              <a class="btn btn-primary" href="#" onClick="{{ goContact }}">Book a consultation</a>
+              <a class="btn btn-secondary" href="#" onClick="{{ goServices }}">View services</a>
+            </div>
+          </div>
+          <div style="height:420px;border-radius:var(--radius-lg);overflow:hidden">
+            <img src="uploads/iStock-1406674466.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+          </div>
+        </div>
+
+        <div class="reveal" style="max-width:1240px;margin:0 auto;padding:0 var(--space-6) 72px;display:flex;flex-wrap:wrap;gap:var(--space-3)">
+          <span class="tag tag-accent">7 years in the Salesforce ecosystem</span>
+          <span class="tag tag-accent-2">Certified B2B Solution Architect</span>
+          <span class="tag tag-accent-2">Certified AI Associate</span>
+        </div>
+
+        <hr class="hr" style="max-width:1240px;margin:0 auto"/>
+
+        <div class="reveal" style="max-width:1240px;margin:0 auto;padding:72px var(--space-6)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--space-6)">
+            <h2>What we do</h2>
+            <a href="#" onClick="{{ goServices }}" class="btn btn-ghost">All services →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
+            <sc-for list="{{ homeServicePreview }}" as="svc" hint-placeholder-count="6">
+              <div class="card elev-sm">
+                <div class="card-title">{{ svc.title }}</div>
+                <p class="card-body">{{ svc.desc }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <hr class="hr" style="max-width:1240px;margin:0 auto"/>
+
+        <div class="reveal" style="max-width:1240px;margin:0 auto;padding:72px var(--space-6)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--space-6)">
+            <h2>Recent work</h2>
+            <a href="#" onClick="{{ goCases }}" class="btn btn-ghost">All case studies →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
+            <sc-for list="{{ caseStudies }}" as="cs" hint-placeholder-count="1">
+              <div class="card elev-sm">
+                <span class="card-kicker">{{ cs.industry }}</span>
+                <div class="card-title">{{ cs.title }}</div>
+                <p class="card-body">{{ cs.outcome }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div class="reveal" style="position:relative;max-width:1240px;margin:0 auto;padding:56px var(--space-6);display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-3);background:var(--color-surface);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:96px">
+          <img src="uploads/iStock-2155769551.jpg" alt="" class="lighten" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4" />
+          <div style="position:absolute;inset:0;background:linear-gradient(100deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 75%, transparent) 45%, transparent 85%)"></div>
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:var(--space-3)">
+            <h2 style="margin:0;text-shadow:0 2px 16px rgba(0,0,0,0.5)">Ready to talk about your Salesforce environment?</h2>
+            <p style="opacity:0.95;max-width:520px;margin:0;text-shadow:0 1px 8px rgba(0,0,0,0.4)">Tell us where things stand and where you want to be — we'll take it from there.</p>
+            <a class="btn btn-primary" href="#" onClick="{{ goContact }}">Book a consultation</a>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="About" style="max-width:900px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-4)">
+        <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">About</span>
+        <h1>About Effluence Consulting</h1>
+        <p style="font-size:17px;opacity:0.85">Effluence Consulting Pty Ltd is a Salesforce consultancy focused on building CRM systems that hold up under real operational pressure. Our work is concentrated in financial services — insurance, advisory and wealth management — where data accuracy and regulatory context matter, though our services aren't limited to that sector.</p>
+        <p style="font-size:17px;opacity:0.85">We work end to end: discovery and solution design, build and integration, then training and ongoing support once the system is live. Engagements are run directly, with one point of contact throughout.</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-2)">
+          <span class="tag tag-accent">7 years in the Salesforce ecosystem</span>
+          <span class="tag tag-accent-2">Certified B2B Solution Architect</span>
+          <span class="tag tag-accent-2">Certified AI Associate</span>
+        </div>
+
+        <hr class="hr"/>
+
+        <div class="reveal" style="border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1059088668.jpg" alt="Team reviewing work at a desk" style="width:100%;height:320px;object-fit:cover;display:block" />
+        </div>
+
+        <div class="reveal">
+        <h2>How we work</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
+          <div class="card elev-sm">
+            <span class="card-kicker">01</span>
+            <div class="card-title">Discover</div>
+            <p class="card-body">Understand the business process, the data and where the current setup is holding you back.</p>
+          </div>
+          <div class="card elev-sm">
+            <span class="card-kicker">02</span>
+            <div class="card-title">Build</div>
+            <p class="card-body">Configure, integrate and develop the solution — Sales Cloud, Financial Services Cloud, or a custom fit.</p>
+          </div>
+          <div class="card elev-sm">
+            <span class="card-kicker">03</span>
+            <div class="card-title">Adopt</div>
+            <p class="card-body">Train the team, hand over documentation, and stay on for ongoing admin and support if needed.</p>
+          </div>
+        </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Services" style="max-width:1240px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-6)">
+        <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+          <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Services</span>
+          <h1 style="margin:0">Services</h1>
+          <p style="font-size:17px;opacity:0.85;max-width:640px">Full-lifecycle Salesforce work — from first implementation to the ongoing admin that keeps a system healthy.</p>
+        </div>
+        <div style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1448152453.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
+        <sc-for list="{{ serviceCategories }}" as="cat" hint-placeholder-count="4">
+          <div class="reveal" style="display:flex;flex-direction:column;gap:var(--space-3)">
+            <h3 style="color:var(--color-accent-300)">{{ cat.name }}</h3>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
+              <sc-for list="{{ cat.items }}" as="svc" hint-placeholder-count="3">
+                <div class="card elev-sm">
+                  <div class="card-title">{{ svc.title }}</div>
+                  <p class="card-body">{{ svc.desc }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isCases }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Case Studies" style="max-width:1000px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-6)">
+        <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+          <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Case studies</span>
+          <h1 style="margin:0">Recent work</h1>
+          <p style="font-size:17px;opacity:0.85">Details from client engagements — anonymized where the client has asked for it.</p>
+        </div>
+        <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-divider)">
+          <img src="uploads/iStock-1283639096.jpg" alt="" style="width:100%;height:280px;object-fit:cover;display:block" />
+        </div>
+        <sc-for list="{{ caseStudies }}" as="cs" hint-placeholder-count="1">
+          <div class="card elev-md reveal" style="gap:var(--space-3);padding:var(--space-6)">
+            <span class="card-kicker">{{ cs.industry }}</span>
+            <h3 style="margin:0">{{ cs.title }}</h3>
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-2)">
+              <div>
+                <h5 style="color:var(--color-accent-300);margin-bottom:4px">Challenge</h5>
+                <p style="margin:0;opacity:0.85">{{ cs.challenge }}</p>
+              </div>
+              <div>
+                <h5 style="color:var(--color-accent-300);margin-bottom:4px">Solution</h5>
+                <p style="margin:0;opacity:0.85">{{ cs.solution }}</p>
+              </div>
+              <div>
+                <h5 style="color:var(--color-accent-300);margin-bottom:4px">Outcome</h5>
+                <p style="margin:0;opacity:0.85">{{ cs.outcome }}</p>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isPricing }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Pricing" style="max-width:1000px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-6)">
+        <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+          <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Pricing</span>
+          <h1 style="margin:0">Pricing</h1>
+          <p style="font-size:17px;opacity:0.85;max-width:640px">Two ways to work together, depending on what your team needs.</p>
+        </div>
+        <div style="height:220px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1961324209.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
+        <div class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <span class="card-kicker">Project engagements</span>
+            <h3 style="margin:0">Custom quote</h3>
+            <p class="card-body" style="opacity:0.85">Implementations, migrations and builds are scoped and quoted per project, based on complexity and timeline.</p>
+            <a class="btn btn-primary" href="#" onClick="{{ goContact }}" style="margin-top:auto">Get a quote</a>
+          </div>
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <span class="card-kicker">Ongoing service agreements</span>
+            <h3 style="margin:0">From $1,800 / day (AUD)</h3>
+            <p class="card-body" style="opacity:0.85">For teams that need an ongoing Salesforce resource — admin, support and continued development. Discounts available for regular or larger engagements.</p>
+            <a class="btn btn-primary" href="#" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isInsights }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Insights" style="max-width:900px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-3)">
+        <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Insights</span>
+        <h1>Insights</h1>
+        <p style="font-size:17px;opacity:0.85">Notes on Salesforce strategy for financial services and other regulated industries — coming soon.</p>
+        <div style="height:220px;border-radius:var(--radius-lg);overflow:hidden;margin:var(--space-2) 0">
+          <img src="uploads/iStock-1661051950.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
+        <a class="btn btn-secondary" href="#" onClick="{{ goContact }}" style="align-self:flex-start;margin-top:var(--space-2)">Get in touch instead</a>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Contact" style="max-width:640px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-4)">
+        <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Contact</span>
+        <h1>Get in touch</h1>
+        <p style="font-size:17px;opacity:0.85">Send a few details about your Salesforce environment and what you're trying to do — we'll follow up by email.</p>
+        <div style="height:200px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1363889021.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
+        <form onSubmit="{{ handleSubmit }}" class="reveal" style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-2)">
+          <div class="field">
+            <label>Name</label>
+            <input class="input" type="text" value="{{ name }}" onChange="{{ handleName }}" required="{{ true }}" />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input class="input" type="email" value="{{ email }}" onChange="{{ handleEmail }}" required="{{ true }}" />
+          </div>
+          <div class="field">
+            <label>Company</label>
+            <input class="input" type="text" value="{{ company }}" onChange="{{ handleCompany }}" />
+          </div>
+          <div class="field">
+            <label>Message</label>
+            <textarea class="input" value="{{ message }}" onChange="{{ handleMessage }}" required="{{ true }}"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send message</button>
+        </form>
+      </section>
+    </sc-if>
+
+  </main>
+
+  <footer style="border-top:1px solid var(--color-divider);position:relative;z-index:1">
+    <div style="max-width:1240px;margin:0 auto;padding:var(--space-6);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-3)">
+      <img src="uploads/fulllogo_transparent_nobuffer.png" alt="Effluence Consulting" style="height:22px;display:block" />
+      <p style="margin:0;font-size:12px;opacity:0.6">© 2026 Effluence Consulting Pty Ltd</p>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { page: 'home', name: '', email: '', company: '', message: '' };
+
+  componentDidMount() {
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          this.observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    this.scanReveals();
+  }
+
+  componentDidUpdate() { this.scanReveals(); }
+  componentWillUnmount() { if (this.observer) this.observer.disconnect(); }
+
+  scanReveals() {
+    document.querySelectorAll('.reveal').forEach((el) => {
+      if (!el.dataset.observed) { el.dataset.observed = '1'; this.observer.observe(el); }
+    });
+  }
+
+  go = (page) => (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page }); window.scrollTo(0, 0); };
+
+  handleName = (e) => this.setState({ name: e.target.value });
+  handleEmail = (e) => this.setState({ email: e.target.value });
+  handleCompany = (e) => this.setState({ company: e.target.value });
+  handleMessage = (e) => this.setState({ message: e.target.value });
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const s = this.state;
+    const subject = encodeURIComponent('Consultation request — ' + (s.company || s.name || 'website'));
+    const body = encodeURIComponent(
+      'Name: ' + s.name + '\nCompany: ' + s.company + '\nEmail: ' + s.email + '\n\n' + s.message
+    );
+    window.location.href = 'mailto:phillip.ta@effluence.com.au?subject=' + subject + '&body=' + body;
+  };
+
+  serviceCategories = [
+    { name: 'Implementation', items: [
+      { title: 'Sales Cloud', desc: 'Core CRM setup for pipeline, forecasting and territory management.' },
+      { title: 'Service Cloud', desc: 'Case management, omni-channel routing and support workflows.' },
+      { title: 'Financial Services Cloud', desc: 'Client, household and portfolio data models for advisors and relationship managers.' },
+      { title: 'Experience Cloud', desc: 'Client and partner portals connected to your Salesforce data.' },
+    ]},
+    { name: 'Data & Integration', items: [
+      { title: 'CRM Data Migration', desc: 'Moving and cleaning data from legacy systems into Salesforce.' },
+      { title: 'Third-Party Integrations', desc: 'Connecting Salesforce to core banking, policy admin and other line-of-business systems.' },
+      { title: 'Data Quality & Governance', desc: 'Deduplication, validation rules and ongoing data hygiene.' },
+    ]},
+    { name: 'Development', items: [
+      { title: 'Custom Apex & Lightning Development', desc: "Bespoke logic and interfaces where standard configuration isn't enough." },
+      { title: 'Flow & Process Automation', desc: 'Automating approvals, notifications and record logic with declarative tools.' },
+      { title: 'Agentforce & AI Enablement', desc: "Configuring Salesforce's AI agents and assistants for real workflows." },
+    ]},
+    { name: 'Ongoing Support', items: [
+      { title: 'Managed Administration', desc: 'Day-to-day admin, user management and configuration changes.' },
+      { title: 'Training & Adoption', desc: 'Onboarding end users and building internal Salesforce capability.' },
+      { title: 'Release & Sandbox Management', desc: 'Change management, testing and safe deployment practices.' },
+    ]},
+  ];
+
+  caseStudies = [
+    {
+      title: 'Financial Services Cloud for a Life Insurance Advisory Business',
+      industry: 'Insurance & Wealth Advisory',
+      challenge: 'Advisors and portfolio managers were working across disconnected systems, making it difficult to bring a full client and policy view into life insurance recommendations.',
+      solution: "Migrated the client's CRM to Salesforce Financial Services Cloud and built an integration with their Omnium policy administration system.",
+      outcome: 'Advisors and portfolio managers now work from a single, connected view of clients and policies when preparing life insurance recommendations.',
+    },
+  ];
+
+  renderVals() {
+    const p = this.state.page;
+    const navDefs = [
+      { key: 'home', label: 'Home' },
+      { key: 'about', label: 'About' },
+      { key: 'services', label: 'Services' },
+      { key: 'cases', label: 'Case Studies' },
+      { key: 'pricing', label: 'Pricing' },
+      { key: 'insights', label: 'Insights' },
+    ];
+    const navItems = navDefs.map(n => ({ key: n.key, label: n.label, current: p === n.key ? 'page' : '', onClick: this.go(n.key) }));
+
+    return {
+      navItems,
+      goHome: this.go('home'),
+      goServices: this.go('services'),
+      goCases: this.go('cases'),
+      goContact: this.go('contact'),
+      isHome: p === 'home', isAbout: p === 'about', isServices: p === 'services',
+      isCases: p === 'cases', isPricing: p === 'pricing', isContact: p === 'contact', isInsights: p === 'insights',
+      serviceCategories: this.serviceCategories,
+      homeServicePreview: this.serviceCategories.flatMap(c => c.items).slice(0, 6),
+      caseStudies: this.caseStudies,
+      name: this.state.name, email: this.state.email, company: this.state.company, message: this.state.message,
+      handleName: this.handleName, handleEmail: this.handleEmail, handleCompany: this.handleCompany, handleMessage: this.handleMessage,
+      handleSubmit: this.handleSubmit,
+    };
+  }
+}
+</script>
+</body>
+</html>
