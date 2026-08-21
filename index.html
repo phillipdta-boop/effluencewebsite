@@ -8,6 +8,7 @@
 <body>
 <x-dc>
 <helmet>
+  <link rel="icon" type="image/png" href="uploads/fulllogo_transparent_nobuffer.png">
   <link rel="stylesheet" href="_ds/nocturne-6eec3740-6149-40c9-ba89-b78e7db87e47/styles.css">
   <script src="_ds/nocturne-6eec3740-6149-40c9-ba89-b78e7db87e47/_ds_bundle.js"></script>
   <style>
@@ -74,9 +75,9 @@
         </div>
 
         <div class="reveal" style="max-width:1240px;margin:0 auto;padding:0 var(--space-6) 72px;display:flex;flex-wrap:wrap;gap:var(--space-3)">
-          <span class="tag tag-accent">7 years in the Salesforce ecosystem</span>
-          <span class="tag tag-accent-2">Certified B2B Solution Architect</span>
-          <span class="tag tag-accent-2">Certified AI Associate</span>
+          <span class="tag tag-accent">7 Years in the Salesforce Ecosystem</span>
+          <span class="tag tag-accent-2">AI-Driven Development Practices</span>
+          <span class="tag tag-accent-2">Built for Consulting Efficiency</span>
         </div>
 
         <hr class="hr" style="max-width:1240px;margin:0 auto"/>
@@ -134,9 +135,9 @@
         <p style="font-size:17px;opacity:0.85">We work end to end: discovery and solution design, build and integration, then training and ongoing support once the system is live. Engagements are run directly, with one point of contact throughout.</p>
 
         <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-2)">
-          <span class="tag tag-accent">7 years in the Salesforce ecosystem</span>
-          <span class="tag tag-accent-2">Certified B2B Solution Architect</span>
-          <span class="tag tag-accent-2">Certified AI Associate</span>
+          <span class="tag tag-accent">7 Years in the Salesforce Ecosystem</span>
+          <span class="tag tag-accent-2">Delivered With Integrity</span>
+          <span class="tag tag-accent-2">Focused on Business Value</span>
         </div>
 
         <hr class="hr"/>
@@ -178,6 +179,39 @@
         <div style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
           <img src="uploads/iStock-1448152453.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
+
+        <div class="reveal" style="display:flex;flex-direction:column;gap:var(--space-4)">
+          <h2 style="margin:0">How engagements typically progress</h2>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)">
+            <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+              <span class="card-kicker">Sounding</span>
+              <h3 style="margin:0">Org audit</h3>
+              <p class="card-body" style="opacity:0.85">A paid, 1–2 week review of your Salesforce org — security, data quality, automation health and, for financial services clients, compliance readiness. Delivered as a prioritised findings report.</p>
+            </div>
+            <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+              <span class="card-kicker">Headwater</span>
+              <h3 style="margin:0">Project engagements</h3>
+              <p class="card-body" style="opacity:0.85">Fixed-scope implementations, migrations and integrations — Financial Services Cloud, Sales Cloud, and client portals.</p>
+              <a href="#headwater" onClick="{{ goHeadwater }}" class="btn btn-ghost" style="margin-top:auto">Explore Headwater →</a>
+            </div>
+            <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+              <span class="card-kicker">Tributary</span>
+              <h3 style="margin:0">AI-enabled add-on</h3>
+              <p class="card-body" style="opacity:0.85">Agentforce capability layered onto an existing Headwater or Reservoir engagement, once the foundation is in place.</p>
+              <a href="#tributary" onClick="{{ goTributary }}" class="btn btn-ghost" style="margin-top:auto">Explore Tributary →</a>
+            </div>
+            <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+              <span class="card-kicker">Reservoir</span>
+              <h3 style="margin:0">Ongoing service agreements</h3>
+              <p class="card-body" style="opacity:0.85">Retainer support that scales with the volume of ongoing work your team needs, once your system is live.</p>
+              <a href="#reservoir" onClick="{{ goReservoir }}" class="btn btn-ghost" style="margin-top:auto">Explore Reservoir →</a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="hr"/>
+
+        <h2 style="margin:0">Capabilities</h2>
         <sc-for list="{{ serviceCategories }}" as="cat" hint-placeholder-count="4">
           <div class="reveal" style="display:flex;flex-direction:column;gap:var(--space-3)">
             <h3 style="color:var(--color-accent-300)">{{ cat.name }}</h3>
@@ -237,17 +271,129 @@
         <div style="height:220px;border-radius:var(--radius-lg);overflow:hidden">
           <img src="uploads/iStock-1961324209.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
-        <div class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
+        <div class="reveal" style="display:flex;flex-direction:column;gap:var(--space-4)">
           <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
-            <span class="card-kicker">Project engagements</span>
+            <span class="card-kicker">Headwater — project engagements</span>
             <h3 style="margin:0">Custom quote</h3>
             <p class="card-body" style="opacity:0.85">Implementations, migrations and builds are scoped and quoted per project, based on complexity and timeline.</p>
-            <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Get a quote</a>
+            <div style="display:flex;gap:var(--space-3);margin-top:auto">
+              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}">Get a quote</a>
+              <a class="btn btn-ghost" href="#headwater" onClick="{{ goHeadwater }}">See Headwater →</a>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+            <h3 style="margin:0">Reservoir — ongoing service agreements</h3>
+            <p style="margin:0;opacity:0.85;font-size:15px">Support tiers scale with the volume of ongoing work your team needs — final pricing is confirmed after a short scoping conversation.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
+            <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+              <span class="card-kicker">Light</span>
+              <h3 style="margin:0">Essential support</h3>
+              <p class="card-body" style="opacity:0.85">For teams that need a Salesforce resource on standby — periodic admin, small changes and troubleshooting.</p>
+              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+            </div>
+            <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+              <span class="card-kicker">Standard</span>
+              <h3 style="margin:0">Ongoing partnership</h3>
+              <p class="card-body" style="opacity:0.85">For teams running regular changes and improvements — a consistent block of time each month for admin, support and development.</p>
+              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+            </div>
+            <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+              <span class="card-kicker">Extensive</span>
+              <h3 style="margin:0">Embedded support</h3>
+              <p class="card-body" style="opacity:0.85">For teams that need a near full-time Salesforce resource — heavy configuration, integrations and continuous platform care.</p>
+              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isHeadwater }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Headwater" style="max-width:1240px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-6)">
+        <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+          <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Headwater</span>
+          <h1 style="margin:0">Headwater — project engagements</h1>
+          <p style="font-size:17px;opacity:0.85;max-width:640px">Fixed-scope Salesforce builds: implementations, migrations and integrations, scoped to your timeline and delivered as a project.</p>
+        </div>
+        <div style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1414981473.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
+        <div class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <span class="card-kicker">Flagship</span>
+            <h3 style="margin:0">Headwater: FSC Foundation</h3>
+            <p class="card-body" style="opacity:0.85">A Financial Services Cloud quick-start for advisory, wealth and insurance clients — household, client and portfolio data models, compliance-aware workflows and core integrations.</p>
           </div>
           <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
-            <span class="card-kicker">Ongoing service agreements</span>
-            <h3 style="margin:0">From $1,800 / day (AUD)</h3>
-            <p class="card-body" style="opacity:0.85">For teams that need an ongoing Salesforce resource — admin, support and continued development. Discounts available for regular or larger engagements.</p>
+            <h3 style="margin:0">Headwater: Migration & Integration</h3>
+            <p class="card-body" style="opacity:0.85">Migrating off a legacy CRM or policy administration system, and integrating Salesforce with the systems you already run — scoped by data volume and system count.</p>
+          </div>
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <h3 style="margin:0">Headwater: Portal</h3>
+            <p class="card-body" style="opacity:0.85">An Experience Cloud client or adviser portal — sellable on its own or bundled onto FSC Foundation.</p>
+          </div>
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <h3 style="margin:0">Headwater: Sales Foundation</h3>
+            <p class="card-body" style="opacity:0.85">A Sales Cloud quick-start for mid-market teams outside financial services — the same delivery model, for a different buyer.</p>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="align-self:flex-start">Get a quote</a>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isTributary }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Tributary" style="max-width:1240px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-6)">
+        <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+          <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Tributary</span>
+          <h1 style="margin:0">Tributary — AI-enabled add-on</h1>
+          <p style="font-size:17px;opacity:0.85;max-width:640px">Tributary brings Salesforce Agentforce into a system we've already built with you — an add-on for clients already working with Effluence through Headwater or Reservoir.</p>
+        </div>
+        <div style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-2157709105.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
+        <div class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <h3 style="margin:0">Tributary: Agentforce for Advisors</h3>
+            <p class="card-body" style="opacity:0.85">Meeting preparation, next-best-action and compliance-aware client servicing, added onto a Headwater FSC Foundation or Reservoir engagement.</p>
+          </div>
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <h3 style="margin:0">Tributary: Agentforce for Service</h3>
+            <p class="card-body" style="opacity:0.85">Case triage and deflection for Service Cloud teams, financial services or otherwise.</p>
+          </div>
+        </div>
+        <p style="opacity:0.75;font-size:15px;max-width:640px">We're rolling this out with existing clients first. If you're already working with us, or want to discuss it for your organisation, get in touch.</p>
+        <a class="btn btn-secondary" href="#contact" onClick="{{ goContact }}" style="align-self:flex-start">Get in touch</a>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isReservoir }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Reservoir" style="max-width:1240px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-6)">
+        <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+          <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Reservoir</span>
+          <h1 style="margin:0">Reservoir — ongoing service agreements</h1>
+          <p style="font-size:17px;opacity:0.85;max-width:640px">Retainer support once your system is live — scaled to the volume of ongoing work your team needs.</p>
+        </div>
+        <div style="height:220px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1961324209.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
+        <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <span class="card-kicker">Light</span>
+            <h3 style="margin:0">Essential support</h3>
+            <p class="card-body" style="opacity:0.85">For teams that need a Salesforce resource on standby — periodic admin, small changes and troubleshooting.</p>
+            <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+          </div>
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <span class="card-kicker">Standard</span>
+            <h3 style="margin:0">Ongoing partnership</h3>
+            <p class="card-body" style="opacity:0.85">For teams running regular changes and improvements — a consistent block of time each month for admin, support and development.</p>
+            <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+          </div>
+          <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
+            <span class="card-kicker">Extensive</span>
+            <h3 style="margin:0">Embedded support</h3>
+            <p class="card-body" style="opacity:0.85">For teams that need a near full-time Salesforce resource — heavy configuration, integrations and continuous platform care.</p>
             <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
           </div>
         </div>
@@ -335,7 +481,7 @@ class Component extends DCLogic {
     }, { threshold: 0.15 });
     this.scanReveals();
 
-    const validPages = ['home', 'about', 'services', 'cases', 'pricing', 'insights', 'contact'];
+    const validPages = ['home', 'about', 'services', 'cases', 'pricing', 'insights', 'contact', 'headwater', 'tributary', 'reservoir'];
     const initial = (window.location.hash || '').slice(1);
     if (validPages.includes(initial) && initial !== this.state.page) this.setState({ page: initial });
     this.onHashChange = () => {
@@ -440,8 +586,12 @@ class Component extends DCLogic {
       goServices: this.go('services'),
       goCases: this.go('cases'),
       goContact: this.go('contact'),
+      goHeadwater: this.go('headwater'),
+      goTributary: this.go('tributary'),
+      goReservoir: this.go('reservoir'),
       isHome: p === 'home', isAbout: p === 'about', isServices: p === 'services',
       isCases: p === 'cases', isPricing: p === 'pricing', isContact: p === 'contact', isInsights: p === 'insights',
+      isHeadwater: p === 'headwater', isTributary: p === 'tributary', isReservoir: p === 'reservoir',
       isContactForm: p === 'contact' && !this.state.sent,
       isContactSent: p === 'contact' && !!this.state.sent,
       sending: !!this.state.sending, submitError: !!this.state.submitError,
