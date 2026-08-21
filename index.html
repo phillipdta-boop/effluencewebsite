@@ -266,7 +266,7 @@
       </section>
     </sc-if>
 
-    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ isContactForm }}" hint-placeholder-val="{{ false }}">
       <section data-screen-label="Contact" style="max-width:640px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-4)">
         <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Contact</span>
         <h1>Get in touch</h1>
@@ -277,22 +277,34 @@
         <form onSubmit="{{ handleSubmit }}" class="reveal" style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-2)">
           <div class="field">
             <label>Name</label>
-            <input class="input" type="text" value="{{ name }}" onChange="{{ handleName }}" required="{{ true }}" />
+            <input class="input" name="name" type="text" value="{{ name }}" onChange="{{ handleName }}" required="{{ true }}" />
           </div>
           <div class="field">
             <label>Email</label>
-            <input class="input" type="email" value="{{ email }}" onChange="{{ handleEmail }}" required="{{ true }}" />
+            <input class="input" name="email" type="email" value="{{ email }}" onChange="{{ handleEmail }}" required="{{ true }}" />
           </div>
           <div class="field">
             <label>Company</label>
-            <input class="input" type="text" value="{{ company }}" onChange="{{ handleCompany }}" />
+            <input class="input" name="company" type="text" value="{{ company }}" onChange="{{ handleCompany }}" />
           </div>
           <div class="field">
             <label>Message</label>
-            <textarea class="input" value="{{ message }}" onChange="{{ handleMessage }}" required="{{ true }}"></textarea>
+            <textarea class="input" name="message" value="{{ message }}" onChange="{{ handleMessage }}" required="{{ true }}"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Send message</button>
+          <button type="submit" class="btn btn-primary btn-block" disabled="{{ sending }}">{{ sendLabel }}</button>
+          <sc-if value="{{ submitError }}" hint-placeholder-val="{{ false }}">
+            <p style="color:var(--color-accent-300);font-size:14px">Something went wrong sending your message — please try again.</p>
+          </sc-if>
         </form>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isContactSent }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Contact" style="max-width:640px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-4)">
+        <span class="tag tag-outline" style="align-self:flex-start">Contact</span>
+        <h1>Message sent</h1>
+        <p style="font-size:17px;opacity:0.85">Thanks — we've received your details and will follow up by email shortly.</p>
+        <a class="btn btn-secondary" href="#contact" onClick="{{ resetContact }}" style="align-self:flex-start">Send another message</a>
       </section>
     </sc-if>
 
@@ -360,11 +372,20 @@ class Component extends DCLogic {
   handleSubmit = (e) => {
     e.preventDefault();
     const s = this.state;
-    const subject = encodeURIComponent('Consultation request — ' + (s.company || s.name || 'website'));
-    const body = encodeURIComponent(
-      'Name: ' + s.name + '\nCompany: ' + s.company + '\nEmail: ' + s.email + '\n\n' + s.message
-    );
-    window.location.href = 'mailto:phillip.ta@effluence.com.au?subject=' + subject + '&body=' + body;
+    this.setState({ sending: true, submitError: false });
+    fetch('https://formspree.io/f/mqpznybb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(e.target),
+    }).then((res) => {
+      if (res.ok) this.setState({ sending: false, sent: true });
+      else this.setState({ sending: false, submitError: true });
+    }).catch(() => this.setState({ sending: false, submitError: true }));
+  };
+
+  resetContact = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ sent: false, name: '', email: '', company: '', message: '' });
   };
 
   serviceCategories = [
@@ -421,6 +442,11 @@ class Component extends DCLogic {
       goContact: this.go('contact'),
       isHome: p === 'home', isAbout: p === 'about', isServices: p === 'services',
       isCases: p === 'cases', isPricing: p === 'pricing', isContact: p === 'contact', isInsights: p === 'insights',
+      isContactForm: p === 'contact' && !this.state.sent,
+      isContactSent: p === 'contact' && !!this.state.sent,
+      sending: !!this.state.sending, submitError: !!this.state.submitError,
+      sendLabel: this.state.sending ? 'Sending…' : 'Send message',
+      resetContact: this.resetContact,
       serviceCategories: this.serviceCategories,
       homeServicePreview: this.serviceCategories.flatMap(c => c.items).slice(0, 6),
       caseStudies: this.caseStudies,
