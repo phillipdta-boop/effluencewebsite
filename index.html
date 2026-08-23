@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/">
+<title>Effluence Consulting | Salesforce Consulting for Financial Services</title>
+<meta name="description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
+<link rel="canonical" href="https://effluence.com.au/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Effluence Consulting">
+<meta property="og:title" content="Effluence Consulting | Salesforce Consulting for Financial Services">
+<meta property="og:description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
+<meta property="og:url" content="https://effluence.com.au/">
+<meta property="og:image" content="https://effluence.com.au/uploads/iStock-1406674466.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Effluence Consulting | Salesforce Consulting for Financial Services">
+<meta name="twitter:description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
+<meta name="twitter:image" content="https://effluence.com.au/uploads/iStock-1406674466.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Effluence Consulting","alternateName":"Effluence Consulting Pty Ltd","url":"https://effluence.com.au/","logo":"https://effluence.com.au/uploads/fulllogo_transparent_nobuffer.png","image":"https://effluence.com.au/uploads/fulllogo_transparent_nobuffer.png","description":"Salesforce consulting for financial services and other regulated industries — implementation, migration, integration and ongoing support.","areaServed":"AU","knowsAbout":["Salesforce","Financial Services Cloud","Sales Cloud","Service Cloud","Experience Cloud","Agentforce"]}
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
+<noscript>
+  <h1>Effluence Consulting — Salesforce systems built for finance-driven businesses.</h1>
+  <p>Effluence Consulting Pty Ltd designs, implements and supports Salesforce environments for financial services firms and beyond — from first rollout to ongoing platform care. Services include Sales Cloud, Service Cloud, Financial Services Cloud, Experience Cloud, CRM data migration, third-party integrations and Agentforce enablement. 7 years in the Salesforce ecosystem.</p>
+</noscript>
 <x-dc>
 <helmet>
   <link rel="icon" type="image/png" href="uploads/icononly_nobuffer.png">
@@ -489,6 +510,26 @@
 class Component extends DCLogic {
   state = { page: 'home', name: '', email: '', company: '', message: '' };
 
+  pageMeta = {
+    home: { title: 'Effluence Consulting | Salesforce Consulting for Financial Services', description: "Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia." },
+    about: { title: 'About | Effluence Consulting', description: 'Effluence Consulting is a Salesforce consultancy focused on financial services — insurance, advisory and wealth management. Discovery through ongoing support, one point of contact.' },
+    services: { title: 'Salesforce Services | Effluence Consulting', description: 'Sales Cloud, Service Cloud, Financial Services Cloud, Experience Cloud, data migration, integrations, custom development and Agentforce — full-lifecycle Salesforce services.' },
+    cases: { title: 'Case Studies | Effluence Consulting', description: 'Recent Salesforce engagements from Effluence Consulting, including a Financial Services Cloud rollout for a life insurance advisory business.' },
+    pricing: { title: 'Pricing | Effluence Consulting', description: 'Headwater project engagements and Reservoir ongoing service agreements — Salesforce consulting pricing for financial services and beyond.' },
+    headwater: { title: 'Headwater — Project Engagements | Effluence Consulting', description: 'Fixed-scope Salesforce builds: Financial Services Cloud quick-starts, CRM migrations, integrations and Experience Cloud portals.' },
+    reservoir: { title: 'Reservoir — Ongoing Service Agreements | Effluence Consulting', description: "Retainer Salesforce support that scales with your team's needs — managed administration, training and platform care once you're live." },
+    tributary: { title: 'Tributary — Agentforce Add-on | Effluence Consulting', description: 'Salesforce Agentforce for advisors and service teams, layered onto an existing Effluence Consulting engagement.' },
+    insights: { title: 'Insights | Effluence Consulting', description: 'Notes and reading on Salesforce strategy for financial services and other regulated industries.' },
+    contact: { title: 'Contact | Effluence Consulting', description: 'Get in touch with Effluence Consulting about your Salesforce environment — implementation, migration, integration or ongoing support.' },
+  };
+
+  applyMeta() {
+    const meta = this.pageMeta[this.state.page] || this.pageMeta.home;
+    if (document.title !== meta.title) document.title = meta.title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc && desc.getAttribute('content') !== meta.description) desc.setAttribute('content', meta.description);
+  }
+
   componentDidMount() {
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -508,9 +549,10 @@ class Component extends DCLogic {
       if (validPages.includes(h) && h !== this.state.page) this.setState({ page: h });
     };
     window.addEventListener('hashchange', this.onHashChange);
+    this.applyMeta();
   }
 
-  componentDidUpdate() { this.scanReveals(); }
+  componentDidUpdate() { this.scanReveals(); this.applyMeta(); }
   componentWillUnmount() {
     if (this.observer) this.observer.disconnect();
     if (this.onHashChange) window.removeEventListener('hashchange', this.onHashChange);
