@@ -72,10 +72,17 @@
       <a href="/" class="nav-brand" onClick="{{ goHome }}" style="display:flex;align-items:center">
         <img src="uploads/fulllogo_transparent_nobuffer.png" alt="Effluence Consulting" style="height:52px;display:block" />
       </a>
-      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
-        <a href="{{ item.href }}" onClick="{{ item.onClick }}" aria-current="{{ item.current }}" style="padding:6px 2px">{{ item.label }}</a>
-      </sc-for>
-      <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-left:var(--space-3)">Book a consultation</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">
+        <i class="ph ph-list nav-icon-open"></i>
+        <i class="ph ph-x nav-icon-close"></i>
+      </label>
+      <div class="nav-links">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <a href="{{ item.href }}" onClick="{{ item.onClick }}" aria-current="{{ item.current }}" style="padding:6px 2px">{{ item.label }}</a>
+        </sc-for>
+        <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-left:var(--space-3)">Book a consultation</a>
+      </div>
     </nav>
   </header>
 
@@ -578,6 +585,8 @@ class Component extends DCLogic {
 
   go = (page) => (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    const navToggle = document.getElementById('nav-toggle');
+    if (navToggle) navToggle.checked = false;
     this.setState({ page });
     window.scrollTo(0, 0);
     const path = page === 'home' ? '/' : '/' + page + '/';

@@ -292,3 +292,91 @@ textarea.input { min-height: 90px; resize: vertical; }
 .dialog-body { font-size: 14px; opacity: 0.85; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   Responsive — the header nav collapses to a toggled menu, and the rules
+   below step down the page templates' inline layout (grids, headings,
+   section padding, banner image heights) at tablet and phone widths.
+   Inline styles beat a plain selector, so overrides here carry !important.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* — nav toggle: hidden checkbox + label, same visually-hidden pattern
+   as .radio input above — driven by the label's `for`, no script. — */
+.nav-toggle-checkbox {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.nav-toggle-label { display: none; }
+.nav-links { display: contents; }
+
+@media (max-width: 860px) {
+  .nav { flex-wrap: wrap; row-gap: var(--space-2); }
+  .nav-brand img { height: 40px !important; }
+  .nav-toggle-label {
+    display: flex; align-items: center; justify-content: center;
+    margin-left: auto; padding: 4px; font-size: 22px; line-height: 1;
+    cursor: pointer; color: var(--color-text); border-radius: var(--radius-sm);
+    min-width: 32px; min-height: 32px;
+  }
+  .nav-toggle-checkbox:focus-visible + .nav-toggle-label {
+    outline: 2px solid var(--color-accent); outline-offset: 2px;
+  }
+  .nav-toggle-label .nav-icon-close { display: none; }
+  .nav-toggle-checkbox:checked ~ .nav-toggle-label .nav-icon-open { display: none; }
+  .nav-toggle-checkbox:checked ~ .nav-toggle-label .nav-icon-close { display: inline; }
+
+  .nav-links {
+    display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3);
+    flex-basis: 100%; width: 100%;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .nav-links a.btn { margin-left: 0 !important; align-self: flex-start; }
+  .nav-toggle-checkbox:checked ~ .nav-links {
+    max-height: 480px; padding: var(--space-3) 0 var(--space-4);
+  }
+
+  h1 { font-size: 38px !important; }
+  h2 { font-size: 28px !important; }
+
+  /* four- and three-column grids step down to two */
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  [style*="grid-template-columns:1.1fr 0.9fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* every multi-column grid becomes one column */
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns:1.1fr 0.9fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  h1 { font-size: 30px !important; }
+  h2 { font-size: 22px !important; }
+
+  /* less air above and below each section */
+  [style*="padding:96px var(--space-6) 56px"] { padding: 56px var(--space-6) 32px !important; }
+  [style*="padding:80px var(--space-6) 96px"] { padding: 48px var(--space-6) 56px !important; }
+  [style*="padding:72px var(--space-6)"] { padding: 40px var(--space-6) !important; }
+  [style*="padding:56px var(--space-6)"] { padding: 36px var(--space-6) !important; }
+
+  /* banner and hero images run shorter on a narrow screen */
+  [style*="height:420px"] { height: 220px !important; }
+  [style*="height:320px"] { height: 200px !important; }
+  [style*="height:280px"] { height: 190px !important; }
+  [style*="height:260px"] { height: 180px !important; }
+  [style*="height:220px"] { height: 160px !important; }
+  [style*="height:200px"] { height: 150px !important; }
+
+  /* decorative background blobs shrink so they don't dominate the page */
+  [style*="width:560px;height:560px"] { width: 280px !important; height: 280px !important; }
+  [style*="width:640px;height:640px"] { width: 320px !important; height: 320px !important; }
+
+  footer > div { justify-content: center !important; text-align: center; }
+}
+
