@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <base href="/">
-<title>Effluence Consulting | Salesforce Consulting for Financial Services</title>
-<meta name="description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
-<link rel="canonical" href="https://effluence.com.au/">
+<title>Contact | Effluence Consulting</title>
+<meta name="description" content="Get in touch with Effluence Consulting about your Salesforce environment — implementation, migration, integration or ongoing support.">
+<link rel="canonical" href="https://effluence.com.au/contact/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Effluence Consulting">
-<meta property="og:title" content="Effluence Consulting | Salesforce Consulting for Financial Services">
-<meta property="og:description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
-<meta property="og:url" content="https://effluence.com.au/">
+<meta property="og:title" content="Contact | Effluence Consulting">
+<meta property="og:description" content="Get in touch with Effluence Consulting about your Salesforce environment — implementation, migration, integration or ongoing support.">
+<meta property="og:url" content="https://effluence.com.au/contact/">
 <meta property="og:image" content="https://effluence.com.au/uploads/iStock-1406674466.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Effluence Consulting | Salesforce Consulting for Financial Services">
-<meta name="twitter:description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
+<meta name="twitter:title" content="Contact | Effluence Consulting">
+<meta name="twitter:description" content="Get in touch with Effluence Consulting about your Salesforce environment — implementation, migration, integration or ongoing support.">
 <meta name="twitter:image" content="https://effluence.com.au/uploads/iStock-1406674466.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Effluence Consulting","alternateName":"Effluence Consulting Pty Ltd","url":"https://effluence.com.au/","logo":"https://effluence.com.au/uploads/fulllogo_transparent_nobuffer.png","image":"https://effluence.com.au/uploads/fulllogo_transparent_nobuffer.png","description":"Salesforce consulting for financial services and other regulated industries — implementation, migration, integration and ongoing support.","areaServed":"AU","knowsAbout":["Salesforce","Financial Services Cloud","Sales Cloud","Service Cloud","Experience Cloud","Agentforce"]}
@@ -24,8 +24,8 @@
 </head>
 <body>
 <noscript>
-  <h1>Effluence Consulting — Salesforce systems built for finance-driven businesses.</h1>
-  <p>Effluence Consulting Pty Ltd designs, implements and supports Salesforce environments for financial services firms and beyond — from first rollout to ongoing platform care. Services include Sales Cloud, Service Cloud, Financial Services Cloud, Experience Cloud, CRM data migration, third-party integrations and Agentforce enablement. 7 years in the Salesforce ecosystem.</p>
+  <h1>Get in touch</h1>
+  <p>Send a few details about your Salesforce environment and what you're trying to do — we'll follow up by email.</p>
 </noscript>
 <x-dc>
 <helmet>
@@ -56,20 +56,6 @@
     .reveal.is-visible { opacity:1; transform:translateY(0); }
     .card { transition:transform 0.25s ease, box-shadow 0.25s ease; }
     .card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
-
-    @keyframes pageIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-    section[data-screen-label] { animation:pageIn 220ms ease-out both; }
-    section.contact-success { animation-duration:320ms; }
-
-    .btn { transition:background-color 140ms ease-out, transform 100ms ease-out; }
-    .btn:active { transform:scale(0.97); }
-    .nav a:not(.btn) { transition:color 120ms ease-out; }
-    .input { transition:border-color 150ms ease-out; }
-
-    @media (prefers-reduced-motion: reduce) {
-      section[data-screen-label] { animation:none; }
-      .btn:active { transform:none; }
-    }
   </style>
   <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 56"><rect width="120" height="56" fill="#0A0C2E"/><text x="60" y="32" font-size="14" fill="#2CA9A6" text-anchor="middle" font-family="sans-serif">EC</text></svg></template>
 </helmet>
@@ -500,14 +486,14 @@
           </div>
           <button type="submit" class="btn btn-primary btn-block" disabled="{{ sending }}">{{ sendLabel }}</button>
           <sc-if value="{{ submitError }}" hint-placeholder-val="{{ false }}">
-            <p class="reveal" style="color:var(--color-accent-300);font-size:14px">Something went wrong sending your message — please try again.</p>
+            <p style="color:var(--color-accent-300);font-size:14px">Something went wrong sending your message — please try again.</p>
           </sc-if>
         </form>
       </section>
     </sc-if>
 
     <sc-if value="{{ isContactSent }}" hint-placeholder-val="{{ false }}">
-      <section data-screen-label="Contact" class="contact-success" style="max-width:640px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-4)">
+      <section data-screen-label="Contact" style="max-width:640px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-4)">
         <span class="tag tag-outline" style="align-self:flex-start">Contact</span>
         <h1>Message sent</h1>
         <p style="font-size:17px;opacity:0.85">Thanks — we've received your details and will follow up by email shortly.</p>
@@ -529,10 +515,10 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { page: 'home', name: '', email: '', company: '', message: '' };
+  state = { page: 'contact', name: '', email: '', company: '', message: '' };
 
   pageMeta = {
-    home: { title: 'Effluence Consulting | Salesforce Consulting for Financial Services', description: "Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia." },
+    home: { title: 'Contact | Effluence Consulting', description: "Get in touch with Effluence Consulting about your Salesforce environment — implementation, migration, integration or ongoing support." },
     about: { title: 'About | Effluence Consulting', description: 'Effluence Consulting is a Salesforce consultancy focused on financial services — insurance, advisory and wealth management. Discovery through ongoing support, one point of contact.' },
     services: { title: 'Salesforce Services | Effluence Consulting', description: 'Sales Cloud, Service Cloud, Financial Services Cloud, Experience Cloud, data migration, integrations, custom development and Agentforce — full-lifecycle Salesforce services.' },
     cases: { title: 'Case Studies | Effluence Consulting', description: 'Recent Salesforce engagements from Effluence Consulting, including a Financial Services Cloud rollout for a life insurance advisory business.' },

@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/">
+<title>Effluence Consulting | Salesforce Consulting for Financial Services</title>
+<meta name="description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
+<link rel="canonical" href="https://effluence.com.au/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Effluence Consulting">
+<meta property="og:title" content="Effluence Consulting | Salesforce Consulting for Financial Services">
+<meta property="og:description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
+<meta property="og:url" content="https://effluence.com.au/">
+<meta property="og:image" content="https://effluence.com.au/uploads/iStock-1406674466.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Effluence Consulting | Salesforce Consulting for Financial Services">
+<meta name="twitter:description" content="Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia.">
+<meta name="twitter:image" content="https://effluence.com.au/uploads/iStock-1406674466.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Effluence Consulting","alternateName":"Effluence Consulting Pty Ltd","url":"https://effluence.com.au/","logo":"https://effluence.com.au/uploads/fulllogo_transparent_nobuffer.png","image":"https://effluence.com.au/uploads/fulllogo_transparent_nobuffer.png","description":"Salesforce consulting for financial services and other regulated industries — implementation, migration, integration and ongoing support.","areaServed":"AU","knowsAbout":["Salesforce","Financial Services Cloud","Sales Cloud","Service Cloud","Experience Cloud","Agentforce"]}
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
+<noscript>
+  <h1>Effluence Consulting — Salesforce systems built for finance-driven businesses.</h1>
+  <p>Effluence Consulting Pty Ltd designs, implements and supports Salesforce environments for financial services firms and beyond — from first rollout to ongoing platform care. Services include Sales Cloud, Service Cloud, Financial Services Cloud, Experience Cloud, CRM data migration, third-party integrations and Agentforce enablement. 7 years in the Salesforce ecosystem.</p>
+</noscript>
 <x-dc>
 <helmet>
   <link rel="icon" type="image/png" href="uploads/icononly_nobuffer.png">
@@ -62,13 +83,20 @@
 
   <header style="position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--color-bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-divider)">
     <nav class="nav" style="max-width:1240px;margin:0 auto;padding:var(--space-3) var(--space-6)">
-      <a href="#home" class="nav-brand" onClick="{{ goHome }}" style="display:flex;align-items:center">
+      <a href="/" class="nav-brand" onClick="{{ goHome }}" style="display:flex;align-items:center">
         <img src="uploads/fulllogo_transparent_nobuffer.png" alt="Effluence Consulting" style="height:52px;display:block" />
       </a>
-      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
-        <a href="{{ item.href }}" onClick="{{ item.onClick }}" aria-current="{{ item.current }}" style="padding:6px 2px">{{ item.label }}</a>
-      </sc-for>
-      <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-left:var(--space-3)">Book a consultation</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">
+        <i class="ph ph-list nav-icon-open"></i>
+        <i class="ph ph-x nav-icon-close"></i>
+      </label>
+      <div class="nav-links">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <a href="{{ item.href }}" onClick="{{ item.onClick }}" aria-current="{{ item.current }}" style="padding:6px 2px">{{ item.label }}</a>
+        </sc-for>
+        <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-left:var(--space-3)">Book a consultation</a>
+      </div>
     </nav>
   </header>
 
@@ -82,8 +110,8 @@
             <h1 style="font-size:52px;max-width:760px">Salesforce systems built for finance-driven businesses.</h1>
             <p style="font-size:18px;max-width:620px;opacity:0.85">Effluence Consulting Pty Ltd designs, implements and supports Salesforce environments for financial services firms and beyond — from first rollout to ongoing platform care.</p>
             <div style="display:flex;gap:var(--space-3);margin-top:var(--space-2)">
-              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}">Book a consultation</a>
-              <a class="btn btn-secondary" href="#services" onClick="{{ goServices }}">View services</a>
+              <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}">Book a consultation</a>
+              <a class="btn btn-secondary" href="/services/" onClick="{{ goServices }}">View services</a>
             </div>
           </div>
           <div style="height:420px;border-radius:var(--radius-lg);overflow:hidden">
@@ -102,7 +130,7 @@
         <div class="reveal" style="max-width:1240px;margin:0 auto;padding:72px var(--space-6)">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--space-6)">
             <h2>What we do</h2>
-            <a href="#services" onClick="{{ goServices }}" class="btn btn-ghost">All services →</a>
+            <a href="/services/" onClick="{{ goServices }}" class="btn btn-ghost">All services →</a>
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
             <sc-for list="{{ homeServicePreview }}" as="svc" hint-placeholder-count="6">
@@ -119,7 +147,7 @@
         <div class="reveal" style="max-width:1240px;margin:0 auto;padding:72px var(--space-6)">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--space-6)">
             <h2>Recent work</h2>
-            <a href="#cases" onClick="{{ goCases }}" class="btn btn-ghost">All case studies →</a>
+            <a href="/cases/" onClick="{{ goCases }}" class="btn btn-ghost">All case studies →</a>
           </div>
           <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
             <sc-for list="{{ caseStudies }}" as="cs" hint-placeholder-count="1">
@@ -138,7 +166,7 @@
           <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:var(--space-3)">
             <h2 style="margin:0;text-shadow:0 2px 16px rgba(0,0,0,0.5)">Ready to talk about your Salesforce environment?</h2>
             <p style="opacity:0.95;max-width:520px;margin:0;text-shadow:0 1px 8px rgba(0,0,0,0.4)">Tell us where things stand and where you want to be — we'll take it from there.</p>
-            <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}">Book a consultation</a>
+            <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}">Book a consultation</a>
           </div>
         </div>
       </section>
@@ -211,21 +239,21 @@
               <span class="card-kicker">Headwater</span>
               <h3 style="margin:0">Project engagements</h3>
               <p class="card-body" style="opacity:0.85">Fixed-scope implementations, migrations and integrations — Financial Services Cloud, Sales Cloud, and client portals.</p>
-              <a href="#headwater" onClick="{{ goHeadwater }}" class="btn btn-ghost" style="margin-top:auto">Explore Headwater →</a>
+              <a href="/headwater/" onClick="{{ goHeadwater }}" class="btn btn-ghost" style="margin-top:auto">Explore Headwater →</a>
             </div>
             <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
               <i class="ph ph-drop" style="font-size:28px;color:var(--color-accent-300)"></i>
               <span class="card-kicker">Reservoir</span>
               <h3 style="margin:0">Ongoing service agreements</h3>
               <p class="card-body" style="opacity:0.85">Retainer support that scales with the volume of ongoing work your team needs, once your system is live.</p>
-              <a href="#reservoir" onClick="{{ goReservoir }}" class="btn btn-ghost" style="margin-top:auto">Explore Reservoir →</a>
+              <a href="/reservoir/" onClick="{{ goReservoir }}" class="btn btn-ghost" style="margin-top:auto">Explore Reservoir →</a>
             </div>
             <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
               <i class="ph ph-robot" style="font-size:28px;color:var(--color-accent-300)"></i>
               <span class="card-kicker">Tributary</span>
               <h3 style="margin:0">AI-enabled add-on</h3>
               <p class="card-body" style="opacity:0.85">Agentforce capability layered onto an existing Headwater or Reservoir engagement, once the foundation is in place.</p>
-              <a href="#tributary" onClick="{{ goTributary }}" class="btn btn-ghost" style="margin-top:auto">Explore Tributary →</a>
+              <a href="/tributary/" onClick="{{ goTributary }}" class="btn btn-ghost" style="margin-top:auto">Explore Tributary →</a>
             </div>
           </div>
         </div>
@@ -299,8 +327,8 @@
             <h3 style="margin:0">Custom quote</h3>
             <p class="card-body" style="opacity:0.85">Implementations, migrations and builds are scoped and quoted per project, based on complexity and timeline.</p>
             <div style="display:flex;gap:var(--space-3);margin-top:auto">
-              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}">Get a quote</a>
-              <a class="btn btn-ghost" href="#headwater" onClick="{{ goHeadwater }}">See Headwater →</a>
+              <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}">Get a quote</a>
+              <a class="btn btn-ghost" href="/headwater/" onClick="{{ goHeadwater }}">See Headwater →</a>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:var(--space-2)">
@@ -312,19 +340,19 @@
               <span class="card-kicker">Light</span>
               <h3 style="margin:0">Essential support</h3>
               <p class="card-body" style="opacity:0.85">For teams that need a Salesforce resource on standby — periodic admin, small changes and troubleshooting.</p>
-              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+              <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
             </div>
             <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
               <span class="card-kicker">Standard</span>
               <h3 style="margin:0">Ongoing partnership</h3>
               <p class="card-body" style="opacity:0.85">For teams running regular changes and improvements — a consistent block of time each month for admin, support and development.</p>
-              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+              <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
             </div>
             <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
               <span class="card-kicker">Extensive</span>
               <h3 style="margin:0">Embedded support</h3>
               <p class="card-body" style="opacity:0.85">For teams that need a near full-time Salesforce resource — heavy configuration, integrations and continuous platform care.</p>
-              <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+              <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
             </div>
           </div>
         </div>
@@ -360,7 +388,7 @@
             <p class="card-body" style="opacity:0.85">A Sales Cloud quick-start for mid-market teams outside financial services — the same delivery model, for a different buyer.</p>
           </div>
         </div>
-        <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="align-self:flex-start">Get a quote</a>
+        <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="align-self:flex-start">Get a quote</a>
       </section>
     </sc-if>
 
@@ -385,7 +413,7 @@
           </div>
         </div>
         <p style="opacity:0.75;font-size:15px;max-width:640px">We're rolling this out with existing clients first. If you're already working with us, or want to discuss it for your organisation, get in touch.</p>
-        <a class="btn btn-secondary" href="#contact" onClick="{{ goContact }}" style="align-self:flex-start">Get in touch</a>
+        <a class="btn btn-secondary" href="/contact/" onClick="{{ goContact }}" style="align-self:flex-start">Get in touch</a>
       </section>
     </sc-if>
 
@@ -404,19 +432,19 @@
             <span class="card-kicker">Light</span>
             <h3 style="margin:0">Essential support</h3>
             <p class="card-body" style="opacity:0.85">For teams that need a Salesforce resource on standby — periodic admin, small changes and troubleshooting.</p>
-            <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+            <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
           </div>
           <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
             <span class="card-kicker">Standard</span>
             <h3 style="margin:0">Ongoing partnership</h3>
             <p class="card-body" style="opacity:0.85">For teams running regular changes and improvements — a consistent block of time each month for admin, support and development.</p>
-            <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+            <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
           </div>
           <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
             <span class="card-kicker">Extensive</span>
             <h3 style="margin:0">Embedded support</h3>
             <p class="card-body" style="opacity:0.85">For teams that need a near full-time Salesforce resource — heavy configuration, integrations and continuous platform care.</p>
-            <a class="btn btn-primary" href="#contact" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
+            <a class="btn btn-primary" href="/contact/" onClick="{{ goContact }}" style="margin-top:auto">Book a consultation</a>
           </div>
         </div>
       </section>
@@ -441,7 +469,7 @@
           </sc-for>
         </div>
 
-        <a class="btn btn-secondary" href="#contact" onClick="{{ goContact }}" style="align-self:flex-start;margin-top:var(--space-2)">Get in touch instead</a>
+        <a class="btn btn-secondary" href="/contact/" onClick="{{ goContact }}" style="align-self:flex-start;margin-top:var(--space-2)">Get in touch instead</a>
       </section>
     </sc-if>
 
@@ -483,7 +511,7 @@
         <span class="tag tag-outline" style="align-self:flex-start">Contact</span>
         <h1>Message sent</h1>
         <p style="font-size:17px;opacity:0.85">Thanks — we've received your details and will follow up by email shortly.</p>
-        <a class="btn btn-secondary" href="#contact" onClick="{{ resetContact }}" style="align-self:flex-start">Send another message</a>
+        <a class="btn btn-secondary" href="/contact/" onClick="{{ resetContact }}" style="align-self:flex-start">Send another message</a>
       </section>
     </sc-if>
 
@@ -503,6 +531,34 @@
 class Component extends DCLogic {
   state = { page: 'home', name: '', email: '', company: '', message: '' };
 
+  pageMeta = {
+    home: { title: 'Effluence Consulting | Salesforce Consulting for Financial Services', description: "Salesforce implementation, Financial Services Cloud builds and ongoing support for finance-driven businesses. Effluence Consulting Pty Ltd — Australia." },
+    about: { title: 'About | Effluence Consulting', description: 'Effluence Consulting is a Salesforce consultancy focused on financial services — insurance, advisory and wealth management. Discovery through ongoing support, one point of contact.' },
+    services: { title: 'Salesforce Services | Effluence Consulting', description: 'Sales Cloud, Service Cloud, Financial Services Cloud, Experience Cloud, data migration, integrations, custom development and Agentforce — full-lifecycle Salesforce services.' },
+    cases: { title: 'Case Studies | Effluence Consulting', description: 'Recent Salesforce engagements from Effluence Consulting, including a Financial Services Cloud rollout for a life insurance advisory business.' },
+    pricing: { title: 'Pricing | Effluence Consulting', description: 'Headwater project engagements and Reservoir ongoing service agreements — Salesforce consulting pricing for financial services and beyond.' },
+    headwater: { title: 'Headwater — Project Engagements | Effluence Consulting', description: 'Fixed-scope Salesforce builds: Financial Services Cloud quick-starts, CRM migrations, integrations and Experience Cloud portals.' },
+    reservoir: { title: 'Reservoir — Ongoing Service Agreements | Effluence Consulting', description: "Retainer Salesforce support that scales with your team's needs — managed administration, training and platform care once you're live." },
+    tributary: { title: 'Tributary — Agentforce Add-on | Effluence Consulting', description: 'Salesforce Agentforce for advisors and service teams, layered onto an existing Effluence Consulting engagement.' },
+    insights: { title: 'Insights | Effluence Consulting', description: 'Notes and reading on Salesforce strategy for financial services and other regulated industries.' },
+    contact: { title: 'Contact | Effluence Consulting', description: 'Get in touch with Effluence Consulting about your Salesforce environment — implementation, migration, integration or ongoing support.' },
+  };
+
+  applyMeta() {
+    const meta = this.pageMeta[this.state.page] || this.pageMeta.home;
+    if (document.title !== meta.title) document.title = meta.title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc && desc.getAttribute('content') !== meta.description) desc.setAttribute('content', meta.description);
+  }
+
+  validPages = ['home', 'about', 'services', 'cases', 'pricing', 'insights', 'contact', 'headwater', 'tributary', 'reservoir'];
+
+  pathToPage(pathname) {
+    const clean = pathname.replace(/^\/|\/$/g, '');
+    if (clean === '') return 'home';
+    return this.validPages.includes(clean) ? clean : null;
+  }
+
   componentDidMount() {
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -514,20 +570,25 @@ class Component extends DCLogic {
     }, { threshold: 0.15 });
     this.scanReveals();
 
-    const validPages = ['home', 'about', 'services', 'cases', 'pricing', 'insights', 'contact', 'headwater', 'tributary', 'reservoir'];
-    const initial = (window.location.hash || '').slice(1);
-    if (validPages.includes(initial) && initial !== this.state.page) this.setState({ page: initial });
-    this.onHashChange = () => {
+    let initial = this.pathToPage(window.location.pathname);
+    if (!initial) {
       const h = (window.location.hash || '').slice(1);
-      if (validPages.includes(h) && h !== this.state.page) this.setState({ page: h });
+      initial = this.validPages.includes(h) ? h : null;
+    }
+    if (initial && initial !== this.state.page) this.setState({ page: initial });
+
+    this.onPopState = (e) => {
+      const page = (e.state && e.state.page) || this.pathToPage(window.location.pathname) || 'home';
+      if (page !== this.state.page) this.setState({ page });
     };
-    window.addEventListener('hashchange', this.onHashChange);
+    window.addEventListener('popstate', this.onPopState);
+    this.applyMeta();
   }
 
-  componentDidUpdate() { this.scanReveals(); }
+  componentDidUpdate() { this.scanReveals(); this.applyMeta(); }
   componentWillUnmount() {
     if (this.observer) this.observer.disconnect();
-    if (this.onHashChange) window.removeEventListener('hashchange', this.onHashChange);
+    if (this.onPopState) window.removeEventListener('popstate', this.onPopState);
   }
 
   scanReveals() {
@@ -538,9 +599,14 @@ class Component extends DCLogic {
 
   go = (page) => (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    const navToggle = document.getElementById('nav-toggle');
+    if (navToggle) navToggle.checked = false;
     this.setState({ page });
     window.scrollTo(0, 0);
-    if (window.location.hash !== '#' + page) window.location.hash = page;
+    const path = page === 'home' ? '/' : '/' + page + '/';
+    if (window.location.pathname !== path) {
+      window.history.pushState({ page }, '', path);
+    }
   };
 
   handleName = (e) => this.setState({ name: e.target.value });
@@ -619,7 +685,7 @@ class Component extends DCLogic {
       { key: 'pricing', label: 'Pricing' },
       { key: 'insights', label: 'Insights' },
     ];
-    const navItems = navDefs.map(n => ({ key: n.key, label: n.label, href: '#' + n.key, current: p === n.key ? 'page' : '', onClick: this.go(n.key) }));
+    const navItems = navDefs.map(n => ({ key: n.key, label: n.label, href: n.key === 'home' ? '/' : '/' + n.key + '/', current: p === n.key ? 'page' : '', onClick: this.go(n.key) }));
 
     return {
       navItems,
