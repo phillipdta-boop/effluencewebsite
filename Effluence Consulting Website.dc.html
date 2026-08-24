@@ -35,6 +35,20 @@
     .reveal.is-visible { opacity:1; transform:translateY(0); }
     .card { transition:transform 0.25s ease, box-shadow 0.25s ease; }
     .card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+
+    @keyframes pageIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    section[data-screen-label] { animation:pageIn 220ms ease-out both; }
+    section.contact-success { animation-duration:320ms; }
+
+    .btn { transition:background-color 140ms ease-out, transform 100ms ease-out; }
+    .btn:active { transform:scale(0.97); }
+    .nav a:not(.btn) { transition:color 120ms ease-out; }
+    .input { transition:border-color 150ms ease-out; }
+
+    @media (prefers-reduced-motion: reduce) {
+      section[data-screen-label] { animation:none; }
+      .btn:active { transform:none; }
+    }
   </style>
   <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 56"><rect width="120" height="56" fill="#0A0C2E"/><text x="60" y="32" font-size="14" fill="#2CA9A6" text-anchor="middle" font-family="sans-serif">EC</text></svg></template>
 </helmet>
@@ -458,14 +472,14 @@
           </div>
           <button type="submit" class="btn btn-primary btn-block" disabled="{{ sending }}">{{ sendLabel }}</button>
           <sc-if value="{{ submitError }}" hint-placeholder-val="{{ false }}">
-            <p style="color:var(--color-accent-300);font-size:14px">Something went wrong sending your message — please try again.</p>
+            <p class="reveal" style="color:var(--color-accent-300);font-size:14px">Something went wrong sending your message — please try again.</p>
           </sc-if>
         </form>
       </section>
     </sc-if>
 
     <sc-if value="{{ isContactSent }}" hint-placeholder-val="{{ false }}">
-      <section data-screen-label="Contact" style="max-width:640px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-4)">
+      <section data-screen-label="Contact" class="contact-success" style="max-width:640px;margin:0 auto;padding:80px var(--space-6) 96px;display:flex;flex-direction:column;gap:var(--space-4)">
         <span class="tag tag-outline" style="align-self:flex-start">Contact</span>
         <h1>Message sent</h1>
         <p style="font-size:17px;opacity:0.85">Thanks — we've received your details and will follow up by email shortly.</p>
