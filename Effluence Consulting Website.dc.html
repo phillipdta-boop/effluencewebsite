@@ -45,6 +45,8 @@
       --color-accent-2-100:#eaf1f9; --color-accent-2-200:#cbdbed; --color-accent-2-300:#9db8de;
       --color-accent-2-400:#6c93cb; --color-accent-2-500:#3D72B9; --color-accent-2-600:#305c96;
       --color-accent-2-700:#274a79; --color-accent-2-800:#1e3a5f; --color-accent-2-900:#162a45;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
     }
     a{text-decoration:none}
     a:hover{color:var(--color-accent)}
@@ -52,6 +54,11 @@
     @keyframes driftB { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-5%,-5%) scale(1.1);} }
     @keyframes tagGlow { 0%,100%{box-shadow:0 0 0 rgba(0,0,0,0);} 50%{box-shadow:0 0 14px color-mix(in srgb, var(--color-accent) 45%, transparent);} }
     @keyframes lineGlow { 0%,100%{opacity:0.5;} 50%{opacity:1;} }
+    @keyframes heroFrameIn { from{opacity:0;transform:scale(1.03);} to{opacity:1;transform:scale(1);} }
+    @keyframes heroFrameInReduced { from{opacity:0;} to{opacity:1;} }
+    @keyframes heroKenBurns { 0%{transform:scale(1) translate(0,0);} 100%{transform:scale(1.08) translate(-2%,-2%);} }
+    .hero-frame { animation:heroFrameIn 650ms var(--ease-out) both; }
+    .hero-img { animation:heroKenBurns 26s var(--ease-in-out) infinite alternate; transform-origin:center; will-change:transform; }
     .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease; }
     .reveal.is-visible { opacity:1; transform:translateY(0); }
     .card { transition:transform 0.25s ease, box-shadow 0.25s ease; }
@@ -69,6 +76,8 @@
     @media (prefers-reduced-motion: reduce) {
       section[data-screen-label] { animation:none; }
       .btn:active { transform:none; }
+      .hero-frame { animation:heroFrameInReduced 300ms ease both; }
+      .hero-img { animation:none; }
     }
   </style>
   <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 56"><rect width="120" height="56" fill="#0A0C2E"/><text x="60" y="32" font-size="14" fill="#2CA9A6" text-anchor="middle" font-family="sans-serif">EC</text></svg></template>
@@ -114,8 +123,8 @@
               <a class="btn btn-secondary" href="/services/" onClick="{{ goServices }}">View services</a>
             </div>
           </div>
-          <div style="height:420px;border-radius:var(--radius-lg);overflow:hidden">
-            <img src="uploads/iStock-1406674466.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+          <div class="hero-frame" style="height:420px;border-radius:var(--radius-lg);overflow:hidden">
+            <img src="uploads/iStock-1406674466.jpg" alt="" class="lighten hero-img" style="width:100%;height:100%;object-fit:cover;display:block" />
           </div>
         </div>
 
@@ -161,7 +170,7 @@
         </div>
 
         <div class="reveal" style="position:relative;max-width:1240px;margin:0 auto;padding:56px var(--space-6);display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-3);background:var(--color-surface);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:96px">
-          <img src="uploads/iStock-2155769551.jpg" alt="" class="lighten" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4" />
+          <img src="uploads/iStock-2155769551.jpg" alt="" class="lighten hero-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4" />
           <div style="position:absolute;inset:0;background:linear-gradient(100deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 75%, transparent) 45%, transparent 85%)"></div>
           <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:var(--space-3)">
             <h2 style="margin:0;text-shadow:0 2px 16px rgba(0,0,0,0.5)">Ready to talk about your Salesforce environment?</h2>
@@ -188,7 +197,7 @@
         <hr class="hr"/>
 
         <div class="reveal" style="border-radius:var(--radius-lg);overflow:hidden">
-          <img src="uploads/iStock-1059088668.jpg" alt="Team reviewing work at a desk" style="width:100%;height:320px;object-fit:cover;display:block" />
+          <img src="uploads/iStock-1059088668.jpg" alt="Team reviewing work at a desk" class="hero-img" style="width:100%;height:320px;object-fit:cover;display:block" />
         </div>
 
         <div class="reveal">
@@ -221,8 +230,8 @@
           <h1 style="margin:0">Services</h1>
           <p style="font-size:17px;opacity:0.85;max-width:640px">Full-lifecycle Salesforce work — from first implementation to the ongoing admin that keeps a system healthy.</p>
         </div>
-        <div style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
-          <img src="uploads/iStock-1448152453.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="hero-frame" style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1448152453.jpg" alt="" class="lighten hero-img" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
 
         <div class="reveal" style="display:flex;flex-direction:column;gap:var(--space-4)">
@@ -285,8 +294,8 @@
           <h1 style="margin:0">Recent work</h1>
           <p style="font-size:17px;opacity:0.85">Details from client engagements — anonymized where the client has asked for it.</p>
         </div>
-        <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-divider)">
-          <img src="uploads/iStock-1283639096.jpg" alt="" style="width:100%;height:280px;object-fit:cover;display:block" />
+        <div class="hero-frame" style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-divider)">
+          <img src="uploads/iStock-1283639096.jpg" alt="" class="hero-img" style="width:100%;height:280px;object-fit:cover;display:block" />
         </div>
         <sc-for list="{{ caseStudies }}" as="cs" hint-placeholder-count="1">
           <div class="card elev-md reveal" style="gap:var(--space-3);padding:var(--space-6)">
@@ -318,8 +327,8 @@
           <h1 style="margin:0">Pricing</h1>
           <p style="font-size:17px;opacity:0.85;max-width:640px">Two ways to work together, depending on what your team needs.</p>
         </div>
-        <div style="height:220px;border-radius:var(--radius-lg);overflow:hidden">
-          <img src="uploads/iStock-1961324209.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="hero-frame" style="height:220px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1961324209.jpg" alt="" class="lighten hero-img" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
         <div class="reveal" style="display:flex;flex-direction:column;gap:var(--space-4)">
           <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
@@ -366,8 +375,8 @@
           <h1 style="margin:0">Headwater — project engagements</h1>
           <p style="font-size:17px;opacity:0.85;max-width:640px">Fixed-scope Salesforce builds: implementations, migrations and integrations, scoped to your timeline and delivered as a project.</p>
         </div>
-        <div style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
-          <img src="uploads/iStock-1414981473.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="hero-frame" style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1414981473.jpg" alt="" class="lighten hero-img" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
         <div class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
           <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
@@ -399,8 +408,8 @@
           <h1 style="margin:0">Tributary — AI-enabled add-on</h1>
           <p style="font-size:17px;opacity:0.85;max-width:640px">Tributary brings Salesforce Agentforce into a system we've already built with you — an add-on for clients already working with Effluence through Headwater or Reservoir.</p>
         </div>
-        <div style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
-          <img src="uploads/iStock-2157709105.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="hero-frame" style="height:260px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-2157709105.jpg" alt="" class="lighten hero-img" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
         <div class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
           <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
@@ -424,8 +433,8 @@
           <h1 style="margin:0">Reservoir — ongoing service agreements</h1>
           <p style="font-size:17px;opacity:0.85;max-width:640px">Retainer support once your system is live — scaled to the volume of ongoing work your team needs.</p>
         </div>
-        <div style="height:220px;border-radius:var(--radius-lg);overflow:hidden">
-          <img src="uploads/iStock-1961324209.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="hero-frame" style="height:220px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1961324209.jpg" alt="" class="lighten hero-img" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
         <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
           <div class="card elev-md" style="padding:var(--space-6);gap:var(--space-3)">
@@ -455,8 +464,8 @@
         <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Insights</span>
         <h1>Insights</h1>
         <p style="font-size:17px;opacity:0.85">Notes on Salesforce strategy for financial services and other regulated industries — coming soon.</p>
-        <div style="height:220px;border-radius:var(--radius-lg);overflow:hidden;margin:var(--space-2) 0">
-          <img src="uploads/iStock-1661051950.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="hero-frame" style="height:220px;border-radius:var(--radius-lg);overflow:hidden;margin:var(--space-2) 0">
+          <img src="uploads/iStock-1661051950.jpg" alt="" class="lighten hero-img" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
 
         <h2 style="margin:var(--space-2) 0 0">Worth reading</h2>
@@ -478,8 +487,8 @@
         <span class="tag tag-outline" style="align-self:flex-start;animation:tagGlow 4s ease-in-out infinite">Contact</span>
         <h1>Get in touch</h1>
         <p style="font-size:17px;opacity:0.85">Send a few details about your Salesforce environment and what you're trying to do — we'll follow up by email.</p>
-        <div style="height:200px;border-radius:var(--radius-lg);overflow:hidden">
-          <img src="uploads/iStock-1363889021.jpg" alt="" class="lighten" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="hero-frame" style="height:200px;border-radius:var(--radius-lg);overflow:hidden">
+          <img src="uploads/iStock-1363889021.jpg" alt="" class="lighten hero-img" style="width:100%;height:100%;object-fit:cover;display:block" />
         </div>
         <form onSubmit="{{ handleSubmit }}" class="reveal" style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-2)">
           <div class="field">
